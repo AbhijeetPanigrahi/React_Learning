@@ -5,6 +5,7 @@ function App() {
   const [numbersAllowed, setNumberAllowed] = useState(false);
   const [charsAllowed, setCharAllowed] = useState(false);
   const [password, setPassword] = useState("");
+  const [copied, setCopied] = useState(false);
 
   // useRef hook (for the 'copy button')
 
@@ -12,7 +13,14 @@ function App() {
 
   const copyToClipboard = useCallback(() => {
     passwordRef.current?.select();
-    window.navigator.clipboard.writeText(password);
+    window.navigator.clipboard.writeText(password).then(() => {
+      // Show the copied message
+      setCopied(true);
+      // Hide the copied message after 2 seconds
+      setTimeout(() => {
+        setCopied(false);
+      }, 2000);
+    });
   }, [password]);
 
   const passwordGenerator = useCallback(() => {
@@ -38,7 +46,7 @@ function App() {
 
   return (
     <>
-      <div className="w-full max-w-md mx-auto shadow-md-rounded-lg px-4 py-3 my-8 text-red-400  bg-gray-800 shadow-md rounded-lg">
+      <div className="w-full max-w-md mx-auto shadow-md-rounded-lg px-4 py-3 my-16 text-red-400  bg-gray-700 shadow-md rounded-lg">
         <div className="text-center pb-3 text-green-400 text-2xl">
           Password Generator
         </div>
@@ -57,6 +65,11 @@ function App() {
           >
             Copy
           </button>
+          {copied && (
+            <div className="absolute top-5 left-1/2 transform -translate-x-1/2 mt-2 p-2 bg-green-500 text-white rounded transition-opacity duration-500 ease-in-out opacity-100">
+              Copied!
+            </div>
+          )}
         </div>
 
         <div className="flex text-sm gap-x-2">
