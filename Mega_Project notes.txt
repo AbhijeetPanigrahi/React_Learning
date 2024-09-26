@@ -1,0 +1,48 @@
+1.
+extra dependencies we need:-
+$ npm i @reduxjs/toolkit react-redux react-router-dom appwrite @tinymce/tinymce-react html-react-parser react-hook-form
+
+2.
+Environment variables
+
+3.
+.env and .env.sample file in src
+
+4.
+According to the vite document we have to give the name of environment variable. Like this:
+VITE_APPWRITE_URL = "test environment" ------ in env file
+console.log(import.meta.env.VITE_APPWRITE_URL); ------in app.jsx file
+
+5.
+Create a new project in appwrite and get the project id and the url from setting
+....
+
+6.
+Vendor Login:
+If you want to take out the auth from appwrite, then also project will work.
+
+So for this make:- Services
+
+7.
+
+For 'auth', go to the appwrite doc. and see the auth section's first code
+
+Then make a folder in vs code for all appwrite work. And make a auth.js too.
+
+8.
+
+config.js file created for the 'Databases' purpose
+
+
+-------------
+
+9.
+
+Made authSlice.js file in store
+
+
+
+
+
+
+
