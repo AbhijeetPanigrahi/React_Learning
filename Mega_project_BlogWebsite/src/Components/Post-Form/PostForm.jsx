@@ -78,17 +78,17 @@ export default function PostForm({ post }) {
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-      <div className="w-2/3 px-2">
+      <div className="w-2/3 px-2 ">
         <Input
           label="Title :"
           placeholder="Title"
-          className="mb-4"
+          className="mb-4 border-black"
           {...register("title", { required: true })}
         />
         <Input
           label="Slug :"
           placeholder="Slug"
-          className="mb-4"
+          className="mb-4 border-black"
           {...register("slug", { required: true })}
           onInput={(e) => {
             setValue("slug", slugTransform(e.currentTarget.value), {
@@ -107,7 +107,7 @@ export default function PostForm({ post }) {
         <Input
           label="Featured Image :"
           type="file"
-          className="mb-4"
+          className="mb-4 border-black"
           accept="image/png, image/jpg, image/jpeg, image/gif"
           {...register("image", { required: !post })}
         />
@@ -123,7 +123,7 @@ export default function PostForm({ post }) {
         <Select
           options={["active", "inactive"]}
           label="Status"
-          className="mb-4"
+          className="mb-4 border-black"
           {...register("status", { required: true })}
         />
         <Button
